@@ -5,20 +5,20 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Configuration;
 
 namespace TP4_GRUPO_2
 {
     public partial class Ejercicio1 : System.Web.UI.Page
     {
+        string connStringViajes;
         protected void Page_Load(object sender, EventArgs e)
         {
+            connStringViajes = ConfigurationManager.ConnectionStrings["Viajes"].ToString();
             if (!IsPostBack)
             {
                 // Query para provincia inicio
-                DataSet ds = DB.Query(
-                        "Data Source=(local)\\SQLEXPRESS;Initial Catalog=Viajes;Integrated Security=True",
-                        "SELECT * FROM Provincias"
-                    );
+                DataSet ds = DB.Query(connStringViajes, "SELECT * FROM Provincias");
                 ddlProvinciaInicio.DataSource = ds;
                 ddlProvinciaInicio.DataTextField = "NombreProvincia";
                 ddlProvinciaInicio.DataValueField = "IdProvincia";
@@ -26,7 +26,7 @@ namespace TP4_GRUPO_2
 
                 // Query para provincia final
                 ds = DB.Query(
-                        "Data Source=(local)\\SQLEXPRESS;Initial Catalog=Viajes;Integrated Security=True",
+                        connStringViajes,
                         "SELECT * FROM Provincias WHERE IdProvincia !=" + ddlProvinciaInicio.SelectedValue
                     );
                 ddlProvinciaFinal.DataSource = ds;
@@ -36,7 +36,7 @@ namespace TP4_GRUPO_2
 
                 // Query para localidad inicio
                 ds = DB.Query(
-                        "Data Source=(local)\\SQLEXPRESS;Initial Catalog=Viajes;Integrated Security=True",
+                        connStringViajes,
                         "SELECT * FROM Localidades WHERE IdProvincia="+ ddlProvinciaInicio.SelectedValue
                     );
                 ddlLocalidadInicio.DataSource = ds;
@@ -46,7 +46,7 @@ namespace TP4_GRUPO_2
 
                 // Query para localidad final
                 ds = DB.Query(
-                        "Data Source=(local)\\SQLEXPRESS;Initial Catalog=Viajes;Integrated Security=True",
+                        connStringViajes,
                         "SELECT * FROM Localidades WHERE IdProvincia=" + ddlProvinciaFinal.SelectedValue
                     );
                 ddlLocalidadFinal.DataSource = ds;
@@ -60,7 +60,7 @@ namespace TP4_GRUPO_2
         {
             // Query para provincia final
             DataSet ds = DB.Query(
-                        "Data Source=(local)\\SQLEXPRESS;Initial Catalog=Viajes;Integrated Security=True",
+                        connStringViajes,
                         "SELECT * FROM Provincias WHERE IdProvincia !=" + ddlProvinciaInicio.SelectedValue
                     );
             ddlProvinciaFinal.DataSource = ds;
@@ -71,7 +71,7 @@ namespace TP4_GRUPO_2
 
             // Query para localidad inicio
             ds = DB.Query(
-                        "Data Source=(local)\\SQLEXPRESS;Initial Catalog=Viajes;Integrated Security=True",
+                        connStringViajes,
                         "SELECT * FROM Localidades WHERE IdProvincia=" + ddlProvinciaInicio.SelectedValue
                     );
             ddlLocalidadInicio.DataSource = ds;
@@ -81,7 +81,7 @@ namespace TP4_GRUPO_2
 
             // Query para localidad final
             ds = DB.Query(
-                    "Data Source=(local)\\SQLEXPRESS;Initial Catalog=Viajes;Integrated Security=True",
+                    connStringViajes,
                     "SELECT * FROM Localidades WHERE IdProvincia=" + ddlProvinciaFinal.SelectedValue
                 );
             ddlLocalidadFinal.DataSource = ds;
@@ -94,7 +94,7 @@ namespace TP4_GRUPO_2
         {
             // Query para localidad final
             DataSet ds = DB.Query(
-                    "Data Source=(local)\\SQLEXPRESS;Initial Catalog=Viajes;Integrated Security=True",
+                    connStringViajes,
                     "SELECT * FROM Localidades WHERE IdProvincia=" + ddlProvinciaFinal.SelectedValue
                 );
             ddlLocalidadFinal.DataSource = ds;
