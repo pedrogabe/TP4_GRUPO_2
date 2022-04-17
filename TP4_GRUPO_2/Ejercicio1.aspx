@@ -15,21 +15,25 @@
             <table style="width:100%;">
                 <tr>
                     <td style="width:50%;">PROVINCIA:</td>
-                    <td><asp:DropDownList ID="ddlProvinciaInicio" runat="server"></asp:DropDownList></td>
+                    <td>
+                        <asp:DropDownList ID="ddlProvinciaInicio" runat="server" AutoPostBack ="true" OnSelectedIndexChanged="ddlProvinciaInicio_SelectedIndexChanged"></asp:DropDownList></td>
                 </tr>
                 <tr>
                     <td>LOCALIDAD:</td>
-                    <td><asp:DropDownList runat="server" ID="ddlLocalidadInicio"></asp:DropDownList></td>
+                    <td><asp:DropDownList runat="server" ID="ddlLocalidadInicio">
+
+                        </asp:DropDownList></td>
                 </tr>
             </table>
         </div>
         <div>
-            <asp:Label ID="Label1" runat="server" Font-Underline="True" Text="DESTINO INICIO"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Font-Underline="True" Text="DESTINO FINAL"></asp:Label>
             <br />
             <table style="width:100%;">
                 <tr>
                     <td style="width:50%;">PROVINCIA:</td>
-                    <td><asp:DropDownList ID="ddlProvinciaFinal" runat="server"></asp:DropDownList></td>
+                    <td>
+                        <asp:DropDownList ID="ddlProvinciaFinal" runat="server" AutoPostBack ="true" OnSelectedIndexChanged="ddlProvinciaFinal_SelectedIndexChanged"></asp:DropDownList></td>
                 </tr>
                 <tr>
                     <td>LOCALIDAD:</td>

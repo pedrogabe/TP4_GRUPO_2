@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ejercicio1.aspx" />
+    <Content Include="SQLQuery1.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
