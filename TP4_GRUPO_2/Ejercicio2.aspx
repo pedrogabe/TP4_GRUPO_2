@@ -43,8 +43,12 @@
                 </tr>
             </table>
             
-            <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" />
-            <asp:Button runat="server" ID="btnQuitarFiltro" Text="Quitar Filtro" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+            <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" OnClick="btnFiltrar_Click1" />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button runat="server" ID="btnQuitarFiltro" Text="Quitar Filtro" Width="98px" OnClick="btnQuitarFiltro_Click" />
+        &nbsp;&nbsp;
         </div>
         <asp:GridView runat="server" ID="gvProductos"></asp:GridView>
     </form>
