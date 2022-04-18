@@ -17,8 +17,17 @@ namespace TP4_GRUPO_2
             connStringLibreria = ConfigurationManager.ConnectionStrings["Libreria"].ToString();
             if (!IsPostBack)
             {
-
+                DataSet ds = DB.Query(connStringLibreria, "SELECT * FROM Temas");
+                ddlTema.DataSource = ds;
+                ddlTema.DataTextField = "Tema";
+                ddlTema.DataValueField = "idTema";
+                ddlTema.DataBind();
             }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Libros.aspx?id=" + ddlTema.SelectedValue);
         }
     }
 }

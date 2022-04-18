@@ -18,7 +18,7 @@
                 </asp:DropDownList>
             </div>
             <div>
-                <asp:HyperLink ID="hlRedirect" runat="server" NavigateUrl="~/Libros.aspx">Ver libros</asp:HyperLink>
+                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Ver Libros</asp:LinkButton>
             </div>
         </div>
     </form>

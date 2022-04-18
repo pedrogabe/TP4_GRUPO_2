@@ -9,6 +9,10 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:GridView ID="gvLibros" runat="server">
+            </asp:GridView>
+            <br />
+            <asp:HyperLink ID="hlRedirect" runat="server" NavigateUrl="~/Ejercicio3.aspx">Colsultar Otro Tema</asp:HyperLink>
         </div>
     </form>
 </body>
