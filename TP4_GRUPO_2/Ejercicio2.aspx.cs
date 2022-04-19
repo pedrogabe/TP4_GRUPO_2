@@ -17,7 +17,7 @@ namespace TP4_GRUPO_2
             connStringNeptuno = ConfigurationManager.ConnectionStrings["Neptuno"].ToString();
             if (!IsPostBack)
             {
-                DataSet ds = DB.Query( connStringNeptuno,"SELECT IdProducto From Productos");
+                DataSet ds = DB.Query(connStringNeptuno, "SELECT * From Productos");
                 gvProductos.DataSource = ds;
                 gvProductos.DataBind();
             }
@@ -25,53 +25,54 @@ namespace TP4_GRUPO_2
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         protected void btnQuitarFiltro_Click(object sender, EventArgs e)
         {
-            DataSet ds = DB.Query(connStringNeptuno, "SELECT IdProducto From Productos");
+            DataSet ds = DB.Query(connStringNeptuno, "SELECT * From Productos");
             gvProductos.DataSource = ds;
             gvProductos.DataBind();
         }
 
         protected void btnFiltrar_Click1(object sender, EventArgs e)
         {
-            if (ddlProductoComparador.SelectedItem.Text == "Igual a:")
-            {
-                if (txtProducto.Text != "" && txtCategoria.Text != "")
-                {
-                    DataSet ds = DB.Query(connStringNeptuno, "SELECT * From Productos WHERE IdProducto=" + txtProducto.Text + "AND IdCategoría=" + txtCategoria.Text);
-                    gvProductos.DataSource = ds;
-                    gvProductos.DataBind();
-                }
-                else
+            string Inst = null, oP, oC;
+
+            oP = ddlProductoComparador.SelectedValue.ToString();
+            oC = ddlCategoriaComparador.SelectedValue.ToString();
+
+            if (oP != null && oC != null)
+            { 
+                if (txtProducto.Text == "" || txtCategoria.Text == "")
                 {
                     if (txtProducto.Text != "")
                     {
-                        DataSet ds = DB.Query(connStringNeptuno, "SELECT * From Productos WHERE IdProducto=" + txtProducto.Text);
-                        gvProductos.DataSource = ds;
-                        gvProductos.DataBind();
+                    Inst = "SELECT * From Productos WHERE IdProducto" + oP + txtProducto.Text;
                     }
                     else
                     {
                         if (txtCategoria.Text != "")
                         {
-                            DataSet ds = DB.Query(connStringNeptuno, "SELECT * From Productos WHERE IdCategoría=" + txtCategoria.Text);
-                            gvProductos.DataSource = ds;
-                            gvProductos.DataBind();
+                            Inst = "SELECT * From Productos WHERE IdCategoría" + oC + txtCategoria.Text;
                         }
                         else
                         {
-                            DataSet ds = DB.Query(connStringNeptuno, "SELECT * From Productos");
-                            gvProductos.DataSource = ds;
-                            gvProductos.DataBind();
+                            Inst = "SELECT * From Productos";
                         }
                     }
                 }
-                
+                else
+                {
+                    Inst = "SELECT * From Productos WHERE IdProducto" + oP + txtProducto.Text + "AND IdCategoría" + oC + txtCategoria.Text;
+                }
+                if (Inst != null)
+                {
+                    DataSet ds = DB.Query(connStringNeptuno, Inst);
+                    gvProductos.DataSource = ds;
+                    gvProductos.DataBind();
+                }
             }
-            
         }
     }
 }

@@ -15,6 +15,20 @@ namespace TP4_GRUPO_2
         protected void Page_Load(object sender, EventArgs e)
         {
             connStringLibreria = ConfigurationManager.ConnectionStrings["Libreria"].ToString();
+            if (!IsPostBack)
+            {
+                string id=null;
+                if (Request.QueryString["id"] != null)
+                {
+                    id = Request.QueryString["id"].ToString();
+                }
+                if (id!=null)
+                {
+                    DataSet ds = DB.Query(connStringLibreria, "SELECT * From Libros WHERE IdTema=" + id);
+                    gvLibros.DataSource = ds;
+                    gvLibros.DataBind();
+                }
+            }
         }
     }
 }
