@@ -6,20 +6,26 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 21%;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="lblInicio" runat="server" Font-Underline="True" Text="DESTINO INICIO"></asp:Label>
             <br />
+            <br />
             <table style="width:100%;">
                 <tr>
-                    <td style="width:50%;">PROVINCIA:</td>
+                    <td class="auto-style1"><strong>PROVINCIA:</strong></td>
                     <td>
                         <asp:DropDownList ID="ddlProvinciaInicio" runat="server" AutoPostBack ="true" OnSelectedIndexChanged="ddlProvinciaInicio_SelectedIndexChanged"></asp:DropDownList></td>
                 </tr>
                 <tr>
-                    <td>LOCALIDAD:</td>
+                    <td class="auto-style1"><strong>LOCALIDAD:</strong></td>
                     <td><asp:DropDownList runat="server" ID="ddlLocalidadInicio">
 
                         </asp:DropDownList></td>
@@ -27,16 +33,18 @@
             </table>
         </div>
         <div>
+            <br />
             <asp:Label ID="Label1" runat="server" Font-Underline="True" Text="DESTINO FINAL"></asp:Label>
+            <br />
             <br />
             <table style="width:100%;">
                 <tr>
-                    <td style="width:50%;">PROVINCIA:</td>
+                    <td class="auto-style1"><strong>PROVINCIA:</strong></td>
                     <td>
                         <asp:DropDownList ID="ddlProvinciaFinal" runat="server" AutoPostBack ="true" OnSelectedIndexChanged="ddlProvinciaFinal_SelectedIndexChanged"></asp:DropDownList></td>
                 </tr>
                 <tr>
-                    <td>LOCALIDAD:</td>
+                    <td class="auto-style1"><strong>LOCALIDAD:</strong></td>
                     <td><asp:DropDownList runat="server" ID="ddlLocalidadFinal"></asp:DropDownList></td>
                 </tr>
             </table>
